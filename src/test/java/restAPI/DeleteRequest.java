@@ -1,0 +1,27 @@
+package restAPI;
+
+import org.junit.Assert;
+import org.junit.Test;
+
+import io.restassured.RestAssured;
+import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
+
+public class DeleteRequest {
+
+	@Test
+	public void test1() {
+		
+		RestAssured.baseURI = "http://localhost:3000";
+		
+		RequestSpecification request = RestAssured.given();
+		
+		Response response = request.delete("employees/9");
+		
+		int responseCode = response.getStatusCode();
+		Assert.assertEquals(200, responseCode);
+			
+	}
+
+
+}
